@@ -38,17 +38,38 @@
 # else:
 #     print('в итоге все понятно с тобой')
 
-print('введите число,второе число,знак')
-num1 = int(input())
-num2 = int(input())
-str = input('введи знак')
-if str == '+':
-   print(num1 + num2)
-elif str == '/':
-   print(num1 / num2)
-elif str == '*': 
-   print(num1 * num2)
-elif str == '-':
-   print(num1 - num2)
-else:
-   print('не дели на ноль')
+# print('введите число,второе число,знак')
+# num1 = int(input())
+# num2 = int(input())
+# str = input('введи знак')
+# if str == '+':
+#    print(num1 + num2)
+# elif str == '/':
+#    print(num1 / num2)
+# elif str == '*': 
+#    print(num1 * num2)
+# elif str == '-':
+#    print(num1 - num2)
+# else:
+#    print('не дели на ноль')
+
+# num11 = 1000
+
+# while num11 > -2:
+#    print(num11)
+#    num11 = num11 - 7
+#    import time
+# time.sleep(15)
+
+# str = 'poka' # вот так for работает, перебирает буквы в словах типо пока будет п о к а
+# for i in str:
+#    print(i) 
+
+# range(начало. конец. шаг) пример:
+# for i in range(0,21,5):
+#    print(i)
+
+#len(строка) - сколько символов строке столько цифр
+str15 = 'pisunbobra'
+for l in range(len(str15)):
+    print(l)

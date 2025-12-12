@@ -119,8 +119,8 @@ user190 = user('messenger',290,'no',10)
 
 user21.print_user()
 user190.print_user()
-=======
-print(sumstr(st1,st2))
+
+# print(sumstr(st1,st2))
 
 
 

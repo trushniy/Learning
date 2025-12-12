@@ -91,6 +91,7 @@
 # st1 = "ты"
 # st2 = "дурак"
 
+<<<<<<< Updated upstream
 # print(sumstr(st1,st2)) #ура получилась ты дурак!!!
 
 # class User:
@@ -119,3 +120,213 @@ user190 = user('messenger',290,'no',10)
 
 user21.print_user()
 user190.print_user()
+=======
+print(sumstr(st1,st2))
+
+# okay go try hard-code
+
+# Сложная программа: Система управления студентами с файлами и статистикой
+import json
+import os
+from datetime import datetime
+
+class Student:
+    def __init__(self, name, age, grades=None):
+        self.name = name
+        self.age = age
+        self.grades = grades if grades else {}
+        self.registration_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    def add_grade(self, subject, grade):
+        if subject not in self.grades:
+            self.grades[subject] = []
+        self.grades[subject].append(grade)
+    
+    def get_average(self, subject=None):
+        if subject:
+            return sum(self.grades.get(subject, [])) / len(self.grades.get(subject, [1]))
+        else:
+            all_grades = []
+            for grades_list in self.grades.values():
+                all_grades.extend(grades_list)
+            return sum(all_grades) / len(all_grades) if all_grades else 0
+    
+    def to_dict(self):
+        return {
+            'name': self.name,
+            'age': self.age,
+            'grades': self.grades,
+            'registration_date': self.registration_date
+        }
+
+class StudentManager:
+    def __init__(self, filename='students.json'):
+        self.filename = filename
+        self.students = {}
+        self.load_data()
+    
+    def load_data(self):
+        try:
+            if os.path.exists(self.filename):
+                with open(self.filename, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+                    for student_id, student_data in data.items():
+                        student = Student(
+                            student_data['name'],
+                            student_data['age'],
+                            student_data['grades']
+                        )
+                        student.registration_date = student_data['registration_date']
+                        self.students[student_id] = student
+        except Exception as e:
+            print(f"Ошибка загрузки данных: {e}")
+    
+    def save_data(self):
+        try:
+            data = {}
+            for student_id, student in self.students.items():
+                data[student_id] = student.to_dict()
+            with open(self.filename, 'w', encoding='utf-8') as f:
+                json.dump(data, f, ensure_ascii=False, indent=2)
+        except Exception as e:
+            print(f"Ошибка сохранения данных: {e}")
+    
+    def add_student(self, student_id, name, age):
+        if student_id not in self.students:
+            self.students[student_id] = Student(name, age)
+            self.save_data()
+            return True
+        return False
+    
+    def get_statistics(self):
+        if not self.students:
+            return "Нет студентов в базе данных"
+        
+        total_students = len(self.students)
+        avg_age = sum(student.age for student in self.students.values()) / total_students
+        
+        all_averages = []
+        subject_stats = {}
+        
+        for student in self.students.values():
+            student_avg = student.get_average()
+            if student_avg > 0:
+                all_averages.append(student_avg)
+            
+            for subject, grades in student.grades.items():
+                if subject not in subject_stats:
+                    subject_stats[subject] = []
+                subject_stats[subject].extend(grades)
+        
+        overall_avg = sum(all_averages) / len(all_averages) if all_averages else 0
+        
+        stats = f"""
+=== СТАТИСТИКА СТУДЕНТОВ ===
+Всего студентов: {total_students}
+Средний возраст: {avg_age:.1f} лет
+Общий средний балл: {overall_avg:.2f}
+
+=== СТАТИСТИКА ПО ПРЕДМЕТАМ ==="""
+        
+        for subject, grades in subject_stats.items():
+            avg_grade = sum(grades) / len(grades)
+            stats += f"\n{subject}: средний балл {avg_grade:.2f} ({len(grades)} оценок)"
+        
+        return stats
+
+def fibonacci_generator(n):
+    """Генератор чисел Фибоначчи"""
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+def matrix_multiply(matrix1, matrix2):
+    """Умножение матриц"""
+    rows1, cols1 = len(matrix1), len(matrix1[0])
+    rows2, cols2 = len(matrix2), len(matrix2[0])
+    
+    if cols1 != rows2:
+        return None
+    
+    result = [[0 for _ in range(cols2)] for _ in range(rows1)]
+    
+    for i in range(rows1):
+        for j in range(cols2):
+            for k in range(cols1):
+                result[i][j] += matrix1[i][k] * matrix2[k][j]
+    
+    return result
+
+# Демонстрация работы
+print("=== СЛОЖНАЯ ПРОГРАММА ===")
+
+# Работа с системой студентов
+manager = StudentManager()
+
+# Добавляем студентов
+manager.add_student("001", "Иван Петров", 20)
+manager.add_student("002", "Мария Сидорова", 19)
+manager.add_student("003", "Алексей Козлов", 21)
+
+# Добавляем оценки
+manager.students["001"].add_grade("Математика", 5)
+manager.students["001"].add_grade("Математика", 4)
+manager.students["001"].add_grade("Физика", 5)
+
+manager.students["002"].add_grade("Математика", 4)
+manager.students["002"].add_grade("Химия", 5)
+manager.students["002"].add_grade("Физика", 4)
+
+manager.students["003"].add_grade("Математика", 3)
+manager.students["003"].add_grade("История", 5)
+
+manager.save_data()
+
+# Выводим статистику
+print(manager.get_statistics())
+
+# Демонстрация Фибоначчи
+print("\n=== ЧИСЛА ФИБОНАЧЧИ (первые 10) ===")
+fib_numbers = list(fibonacci_generator(10))
+print(fib_numbers)
+
+# Демонстрация умножения матриц
+print("\n=== УМНОЖЕНИЕ МАТРИЦ ===")
+matrix_a = [[1, 2], [3, 4]]
+matrix_b = [[5, 6], [7, 8]]
+result_matrix = matrix_multiply(matrix_a, matrix_b)
+print(f"Матрица A: {matrix_a}")
+print(f"Матрица B: {matrix_b}")
+print(f"A × B = {result_matrix}")
+
+# Сложная обработка данных с lambda и filter
+print("\n=== ОБРАБОТКА ДАННЫХ ===")
+numbers = list(range(1, 21))
+# Фильтруем простые числа
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+primes = list(filter(is_prime, numbers))
+squares = list(map(lambda x: x**2, primes))
+print(f"Простые числа от 1 до 20: {primes}")
+print(f"Их квадраты: {squares}")
+
+# Работа со словарями и множествами
+data_analysis = {
+    'numbers': numbers,
+    'primes': primes,
+    'even': [x for x in numbers if x % 2 == 0],
+    'odd': [x for x in numbers if x % 2 == 1]
+}
+
+print(f"\nАнализ чисел от 1 до 20:")
+for category, values in data_analysis.items():
+    print(f"{category}: {len(values)} элементов, сумма: {sum(values)}")
+
+>>>>>>> Stashed changes

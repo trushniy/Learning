@@ -91,7 +91,6 @@
 # st1 = "ты"
 # st2 = "дурак"
 
-<<<<<<< Updated upstream
 # print(sumstr(st1,st2)) #ура получилась ты дурак!!!
 
 # class User:
@@ -123,9 +122,10 @@ user190.print_user()
 =======
 print(sumstr(st1,st2))
 
+
+
 # okay go try hard-code
 
-# Сложная программа: Система управления студентами с файлами и статистикой
 import json
 import os
 from datetime import datetime
@@ -179,7 +179,7 @@ class StudentManager:
                         student.registration_date = student_data['registration_date']
                         self.students[student_id] = student
         except Exception as e:
-            print(f"Ошибка загрузки данных: {e}")
+            print(f"ошибка загрузки данных: {e}")
     
     def save_data(self):
         try:
@@ -189,7 +189,7 @@ class StudentManager:
             with open(self.filename, 'w', encoding='utf-8') as f:
                 json.dump(data, f, ensure_ascii=False, indent=2)
         except Exception as e:
-            print(f"Ошибка сохранения данных: {e}")
+            print(f"ошибка сохранения данных: {e}")
     
     def add_student(self, student_id, name, age):
         if student_id not in self.students:
@@ -200,7 +200,7 @@ class StudentManager:
     
     def get_statistics(self):
         if not self.students:
-            return "Нет студентов в базе данных"
+            return "нет студентов в базе данных"
         
         total_students = len(self.students)
         avg_age = sum(student.age for student in self.students.values()) / total_students
@@ -221,13 +221,12 @@ class StudentManager:
         overall_avg = sum(all_averages) / len(all_averages) if all_averages else 0
         
         stats = f"""
-=== СТАТИСТИКА СТУДЕНТОВ ===
-Всего студентов: {total_students}
-Средний возраст: {avg_age:.1f} лет
-Общий средний балл: {overall_avg:.2f}
+статистика студентов
+всего студентов: {total_students}
+средний возраст: {avg_age:.1f} лет
+общий средний балл: {overall_avg:.2f}
 
-=== СТАТИСТИКА ПО ПРЕДМЕТАМ ==="""
-        
+статистика по предметам"""
         for subject, grades in subject_stats.items():
             avg_grade = sum(grades) / len(grades)
             stats += f"\n{subject}: средний балл {avg_grade:.2f} ({len(grades)} оценок)"
@@ -235,14 +234,12 @@ class StudentManager:
         return stats
 
 def fibonacci_generator(n):
-    """Генератор чисел Фибоначчи"""
     a, b = 0, 1
     for _ in range(n):
         yield a
         a, b = b, a + b
 
 def matrix_multiply(matrix1, matrix2):
-    """Умножение матриц"""
     rows1, cols1 = len(matrix1), len(matrix1[0])
     rows2, cols2 = len(matrix2), len(matrix2[0])
     
@@ -258,52 +255,42 @@ def matrix_multiply(matrix1, matrix2):
     
     return result
 
-# Демонстрация работы
-print("=== СЛОЖНАЯ ПРОГРАММА ===")
-
-# Работа с системой студентов
+print("сложная программа")
 manager = StudentManager()
 
-# Добавляем студентов
-manager.add_student("001", "Иван Петров", 20)
-manager.add_student("002", "Мария Сидорова", 19)
-manager.add_student("003", "Алексей Козлов", 21)
+manager.add_student("001", "иван петров", 20)
+manager.add_student("002", "мария сидорова", 19)
+manager.add_student("003", "алексей козлов", 21)
 
-# Добавляем оценки
-manager.students["001"].add_grade("Математика", 5)
-manager.students["001"].add_grade("Математика", 4)
-manager.students["001"].add_grade("Физика", 5)
+manager.students["001"].add_grade("математика", 5)
+manager.students["001"].add_grade("математика", 4)
+manager.students["001"].add_grade("физика", 5)
 
-manager.students["002"].add_grade("Математика", 4)
-manager.students["002"].add_grade("Химия", 5)
-manager.students["002"].add_grade("Физика", 4)
+manager.students["002"].add_grade("математика", 4)
+manager.students["002"].add_grade("химия", 5)
+manager.students["002"].add_grade("физика", 4)
 
-manager.students["003"].add_grade("Математика", 3)
-manager.students["003"].add_grade("История", 5)
+manager.students["003"].add_grade("математика", 3)
+manager.students["003"].add_grade("история", 5)
 
 manager.save_data()
 
-# Выводим статистику
 print(manager.get_statistics())
 
-# Демонстрация Фибоначчи
-print("\n=== ЧИСЛА ФИБОНАЧЧИ (первые 10) ===")
+print("\nчисла фибоначчи (первые 10)")
 fib_numbers = list(fibonacci_generator(10))
 print(fib_numbers)
 
-# Демонстрация умножения матриц
-print("\n=== УМНОЖЕНИЕ МАТРИЦ ===")
+print("\nумножение матриц")
 matrix_a = [[1, 2], [3, 4]]
 matrix_b = [[5, 6], [7, 8]]
 result_matrix = matrix_multiply(matrix_a, matrix_b)
-print(f"Матрица A: {matrix_a}")
-print(f"Матрица B: {matrix_b}")
-print(f"A × B = {result_matrix}")
+print(f"матрица a: {matrix_a}")
+print(f"матрица b: {matrix_b}")
+print(f"a × b = {result_matrix}")
 
-# Сложная обработка данных с lambda и filter
-print("\n=== ОБРАБОТКА ДАННЫХ ===")
+print("\nобработка данных")
 numbers = list(range(1, 21))
-# Фильтруем простые числа
 def is_prime(n):
     if n < 2:
         return False
@@ -314,10 +301,9 @@ def is_prime(n):
 
 primes = list(filter(is_prime, numbers))
 squares = list(map(lambda x: x**2, primes))
-print(f"Простые числа от 1 до 20: {primes}")
-print(f"Их квадраты: {squares}")
+print(f"простые числа от 1 до 20: {primes}")
+print(f"их квадраты: {squares}")
 
-# Работа со словарями и множествами
 data_analysis = {
     'numbers': numbers,
     'primes': primes,
@@ -325,8 +311,6 @@ data_analysis = {
     'odd': [x for x in numbers if x % 2 == 1]
 }
 
-print(f"\nАнализ чисел от 1 до 20:")
+print(f"\nанализ чисел от 1 до 20:")
 for category, values in data_analysis.items():
     print(f"{category}: {len(values)} элементов, сумма: {sum(values)}")
-
->>>>>>> Stashed changes

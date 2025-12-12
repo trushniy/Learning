@@ -84,11 +84,38 @@
 # print_hello("собака",10)
 # print_hello("кошка",20)
 
-def sumstr(str1,str2):
-   result = (str1 + str2)
-   return result
+# def sumstr(str1,str2):
+#    result = (str1 + str2)
+#    return result
 
-st1 = "пися"
-st2 = "попа"
+# st1 = "ты"
+# st2 = "дурак"
 
-print(sumstr(st1,st2))
+# print(sumstr(st1,st2)) #ура получилась ты дурак!!!
+
+# class User:
+#    def __init__(self, name, age, password):
+#       self.name = name
+#       self.age = age
+#       self.password = password
+   
+#    def print_user(self):
+#       print('Имя:', self.name, 'Возраст:', self.age, 'Пароль:', self.password)
+
+# user61 = User('Egor', 13, 'Kirill')
+# user61.print_user()
+
+class user:
+   def __init__(self,name2,height,fat,weight):
+      self.name = name2
+      self.height = height
+      self.fat = fat
+      self.weight = weight
+   def print_user(self):
+      print('имя:',self.name,',рост:',self.height,',толстый?',self.fat,'и сколько вес?',self.weight)
+
+user21 = user('maks',150,'yes',1500)
+user190 = user('messenger',290,'no',10)
+
+user21.print_user()
+user190.print_user()

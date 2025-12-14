@@ -105,18 +105,49 @@
 # user61 = User('Egor', 13, 'Kirill')
 # user61.print_user()
 
-class user:
-   def __init__(self,name2,height,fat,weight):
-      self.name = name2
-      self.height = height
-      self.fat = fat
-      self.weight = weight
-   def print_user(self):
-      print('имя:',self.name,',рост:',self.height,',толстый?',self.fat,'и сколько вес?',self.weight)
+# class user:
+#    def __init__(self,name2,height,fat,weight):
+#       self.name = name2
+#       self.height = height
+#       self.fat = fat
+#       self.weight = weight
+#    def print_user(self):
+#       print('имя:',self.name,',рост:',self.height,',толстый?',self.fat,'и сколько вес?',self.weight)
 
-user21 = user('maks',150,'yes',1500)
-user190 = user('messenger',290,'no',10)
+# user21 = user('maks',150,'yes',1500)
+# user190 = user('messenger',290,'no',10)
 
+<<<<<<< HEAD
+# user21.print_user()
+# user190.print_user()
+
+
+# str2 = "Egorultramegasuperdota2" # [начало,конец,шаг]
+# print(str2[0:4])                   # [начало,конец]
+#                                     # [номер]
+# lastindex = str2[-5]
+# print(lastindex)   = Ищет так же только с концав
+
+# str10 = "1230031023002401401285167445717571257166923487126577"
+# print(str10.find('2')) #первая цифра
+# print(str10.rfind('2')) #последняя цифра
+# print(str10.index('f')) #ОШИБКА,find бы так не поступила
+# print(str10.rindex('5')) # тоже самое что find and rfind, только ошибку выдает если что  
+
+
+# strpisya = "HUILO"
+# strpisya = strpisya.lower() #lower= низкие буквы
+# print(strpisya)
+
+# strpopa = "hUilOO"         
+# strpopa = strpopa.upper()      #upper= большие буквы
+# print(strpopa)
+
+#replace что заменить,на что заменить,сколько раз
+strkaka = '101000101000'
+strkaka = strkaka.replace('0','*',5)
+print(strkaka)
+=======
 user21.print_user()
 user190.print_user()
 
@@ -314,3 +345,7 @@ data_analysis = {
 print(f"\nанализ чисел от 1 до 20:")
 for category, values in data_analysis.items():
     print(f"{category}: {len(values)} элементов, сумма: {sum(values)}")
+<<<<<<< Updated upstream
+=======
+>>>>>>> 8232c90dcd315184572d64689f7f888355cca67b
+>>>>>>> Stashed changes

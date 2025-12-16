@@ -117,7 +117,6 @@
 # user21 = user('maks',150,'yes',1500)
 # user190 = user('messenger',290,'no',10)
 
-<<<<<<< HEAD
 # user21.print_user()
 # user190.print_user()
 
@@ -136,216 +135,40 @@
 
 
 # strpisya = "HUILO"
-# strpisya = strpisya.lower() #lower= низкие буквы
+# strpisya = strpisya.lower() lower= низкие буквы
 # print(strpisya)
 
 # strpopa = "hUilOO"         
-# strpopa = strpopa.upper()      #upper= большие буквы
+# strpopa = strpopa.upper()      upper= большие буквы
 # print(strpopa)
 
 #replace что заменить,на что заменить,сколько раз
-strkaka = '101000101000'
-strkaka = strkaka.replace('0','*',5)
-print(strkaka)
-=======
-user21.print_user()
-user190.print_user()
+# strkaka = '101000101000'
+# strkaka = strkaka.replace('0','*',5)
+# print(strkaka)
 
-# print(sumstr(st1,st2))
+#append(x)
+# list1 = [1,2,3,4,5]
+# list1.append(104)
+# #remoe(x)
 
+# list1.remove(5)
+# print(list1)
 
+#insert(i,x) del[i] insert как append только вставляет куда хочешь
+# делит как ремув только ищет по индексу а не по числу
+# list2 = [0,1,2,4,6,8,2,0,2,4]
+# list2.insert(4,"hello")
+# del list2[4]
+# print(list2)
 
-# okay go try hard-code
+#метод сорт (sort), сортирует список 
+# lst = [15,25,612,643,1267,5,1,4]
+# lst.sort()
+# print(lst)
+#чтобы сделать по убыванию пишем = lst.sort(reverse = True)
 
-import json
-import os
-from datetime import datetime
-
-class Student:
-    def __init__(self, name, age, grades=None):
-        self.name = name
-        self.age = age
-        self.grades = grades if grades else {}
-        self.registration_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    
-    def add_grade(self, subject, grade):
-        if subject not in self.grades:
-            self.grades[subject] = []
-        self.grades[subject].append(grade)
-    
-    def get_average(self, subject=None):
-        if subject:
-            return sum(self.grades.get(subject, [])) / len(self.grades.get(subject, [1]))
-        else:
-            all_grades = []
-            for grades_list in self.grades.values():
-                all_grades.extend(grades_list)
-            return sum(all_grades) / len(all_grades) if all_grades else 0
-    
-    def to_dict(self):
-        return {
-            'name': self.name,
-            'age': self.age,
-            'grades': self.grades,
-            'registration_date': self.registration_date
-        }
-
-class StudentManager:
-    def __init__(self, filename='students.json'):
-        self.filename = filename
-        self.students = {}
-        self.load_data()
-    
-    def load_data(self):
-        try:
-            if os.path.exists(self.filename):
-                with open(self.filename, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
-                    for student_id, student_data in data.items():
-                        student = Student(
-                            student_data['name'],
-                            student_data['age'],
-                            student_data['grades']
-                        )
-                        student.registration_date = student_data['registration_date']
-                        self.students[student_id] = student
-        except Exception as e:
-            print(f"ошибка загрузки данных: {e}")
-    
-    def save_data(self):
-        try:
-            data = {}
-            for student_id, student in self.students.items():
-                data[student_id] = student.to_dict()
-            with open(self.filename, 'w', encoding='utf-8') as f:
-                json.dump(data, f, ensure_ascii=False, indent=2)
-        except Exception as e:
-            print(f"ошибка сохранения данных: {e}")
-    
-    def add_student(self, student_id, name, age):
-        if student_id not in self.students:
-            self.students[student_id] = Student(name, age)
-            self.save_data()
-            return True
-        return False
-    
-    def get_statistics(self):
-        if not self.students:
-            return "нет студентов в базе данных"
-        
-        total_students = len(self.students)
-        avg_age = sum(student.age for student in self.students.values()) / total_students
-        
-        all_averages = []
-        subject_stats = {}
-        
-        for student in self.students.values():
-            student_avg = student.get_average()
-            if student_avg > 0:
-                all_averages.append(student_avg)
-            
-            for subject, grades in student.grades.items():
-                if subject not in subject_stats:
-                    subject_stats[subject] = []
-                subject_stats[subject].extend(grades)
-        
-        overall_avg = sum(all_averages) / len(all_averages) if all_averages else 0
-        
-        stats = f"""
-статистика студентов
-всего студентов: {total_students}
-средний возраст: {avg_age:.1f} лет
-общий средний балл: {overall_avg:.2f}
-
-статистика по предметам"""
-        for subject, grades in subject_stats.items():
-            avg_grade = sum(grades) / len(grades)
-            stats += f"\n{subject}: средний балл {avg_grade:.2f} ({len(grades)} оценок)"
-        
-        return stats
-
-def fibonacci_generator(n):
-    a, b = 0, 1
-    for _ in range(n):
-        yield a
-        a, b = b, a + b
-
-def matrix_multiply(matrix1, matrix2):
-    rows1, cols1 = len(matrix1), len(matrix1[0])
-    rows2, cols2 = len(matrix2), len(matrix2[0])
-    
-    if cols1 != rows2:
-        return None
-    
-    result = [[0 for _ in range(cols2)] for _ in range(rows1)]
-    
-    for i in range(rows1):
-        for j in range(cols2):
-            for k in range(cols1):
-                result[i][j] += matrix1[i][k] * matrix2[k][j]
-    
-    return result
-
-print("сложная программа")
-manager = StudentManager()
-
-manager.add_student("001", "иван петров", 20)
-manager.add_student("002", "мария сидорова", 19)
-manager.add_student("003", "алексей козлов", 21)
-
-manager.students["001"].add_grade("математика", 5)
-manager.students["001"].add_grade("математика", 4)
-manager.students["001"].add_grade("физика", 5)
-
-manager.students["002"].add_grade("математика", 4)
-manager.students["002"].add_grade("химия", 5)
-manager.students["002"].add_grade("физика", 4)
-
-manager.students["003"].add_grade("математика", 3)
-manager.students["003"].add_grade("история", 5)
-
-manager.save_data()
-
-print(manager.get_statistics())
-
-print("\nчисла фибоначчи (первые 10)")
-fib_numbers = list(fibonacci_generator(10))
-print(fib_numbers)
-
-print("\nумножение матриц")
-matrix_a = [[1, 2], [3, 4]]
-matrix_b = [[5, 6], [7, 8]]
-result_matrix = matrix_multiply(matrix_a, matrix_b)
-print(f"матрица a: {matrix_a}")
-print(f"матрица b: {matrix_b}")
-print(f"a × b = {result_matrix}")
-
-print("\nобработка данных")
-numbers = list(range(1, 21))
-def is_prime(n):
-    if n < 2:
-        return False
-    for i in range(2, int(n**0.5) + 1):
-        if n % i == 0:
-            return False
-    return True
-
-primes = list(filter(is_prime, numbers))
-squares = list(map(lambda x: x**2, primes))
-print(f"простые числа от 1 до 20: {primes}")
-print(f"их квадраты: {squares}")
-
-data_analysis = {
-    'numbers': numbers,
-    'primes': primes,
-    'even': [x for x in numbers if x % 2 == 0],
-    'odd': [x for x in numbers if x % 2 == 1]
-}
-
-print(f"\nанализ чисел от 1 до 20:")
-for category, values in data_analysis.items():
-    print(f"{category}: {len(values)} элементов, сумма: {sum(values)}")
-<<<<<<< Updated upstream
-=======
->>>>>>> 8232c90dcd315184572d64689f7f888355cca67b
->>>>>>> Stashed changes
+# str1.split = может из строки сделать список например:
+# str1 = '1!2!3!4!5!6!7'
+# lst = str1.split("!")
+# print(lst)

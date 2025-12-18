@@ -172,3 +172,28 @@
 # str1 = '1!2!3!4!5!6!7'
 # lst = str1.split("!")
 # print(lst)
+
+# dict = {'name':'Egor','age':150} #dict = ключ-значение 
+# dict['password'] = 'password1'  # можно добавить
+# del dict['name'] #можно удалить
+# print(dict) 
+
+#dict2 = dict(name = 'Egor',age=150,password='password1') # 2 вариация dict
+# print(list(dict2.keys())) # можно посмотреть ключи = name,age,password
+# print(list(dict2.values())) # можно посмотреть значения = Egor,150,password1
+# print(list(dict2.items())) # и ключи и значения
+# print(dict2.get('name')) # получает ключи 
+# print(dict2.pop('name')) # удаляет и возвращает 
+
+
+# МНОЖЕСТВА!!!
+# list = [1,2,76,3,6,5,1,5,12,5,56,8,8,34,356]
+# set1 = set(list)
+# print(set1)
+
+# set2 = set()
+# set2.add('s')
+# print(set2)
+
+friz = frozenset('pisun')
+print(list(friz))

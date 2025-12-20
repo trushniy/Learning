@@ -195,5 +195,14 @@
 # set2.add('s')
 # print(set2)
 
-friz = frozenset('pisun')
-print(list(friz))
+# friz = frozenset('fawatafashnelepepe')
+# print(list(friz))
+
+# open(путь,режим)r w 
+file = open('learning\Test.txt')
+
+test = file.read() #read- считывает ваш файл
+# test42 = file42.readline() # считывает строчку
+# test42 = file42.readlines() # считывает строчки
+print(len(test))
+

@@ -199,12 +199,27 @@
 # print(list(friz))
 
 # open(путь,режим)r w 
-import os
-script_dir = os.path.dirname(__file__)
-file = open(os.path.join(script_dir, 'Test.txt'))
+# file = open('learning\Test.txt')
+# test = file.read() #read- считывает ваш файл
+# test = file.readline() # test42 = file42.readline() # считывает строчку
+# test = file.readlines()# test42 = file42.readlines() # считывает строчки
+# print(test)
 
-test = file.read() #read- считывает ваш файл
-# test42 = file42.readline() # считывает строчку
-# test42 = file42.readlines() # считывает строчки
-print(len(test))
+file = open('learning\Test.txt','r')
+list = []
+for i in file:
+   list.append(i)
+print(list) 
+file.close()
 
+with open('learning\Test.txt','w')as f:
+   f.write('ura 12')
+
+# try: # попробует выполнить 
+#    file = open('learning\Test.txt','r')
+#    file.write('25')
+# except Exception as e: # если ошибка то выйдет это = print('не получилось')
+#    print('не получилось',e)
+# finally:
+#    file.close()
+#    print('file closed') 

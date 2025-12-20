@@ -199,7 +199,9 @@
 # print(list(friz))
 
 # open(путь,режим)r w 
-file = open('learning\\Test.txt')
+import os
+script_dir = os.path.dirname(__file__)
+file = open(os.path.join(script_dir, 'Test.txt'))
 
 test = file.read() #read- считывает ваш файл
 # test42 = file42.readline() # считывает строчку

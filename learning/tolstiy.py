@@ -199,7 +199,7 @@
 # print(list(friz))
 
 # open(путь,режим)r w 
-file = open('learning\Test.txt')
+file = open('learning\\Test.txt')
 
 test = file.read() #read- считывает ваш файл
 # test42 = file42.readline() # считывает строчку

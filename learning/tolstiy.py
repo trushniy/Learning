@@ -205,15 +205,15 @@
 # test = file.readlines()# test42 = file42.readlines() # считывает строчки
 # print(test)
 
-file = open('learning\Test.txt','r')
-list = []
-for i in file:
-   list.append(i)
-print(list) 
-file.close()
+# file = open('learning\Test.txt','r')
+# list = []
+# for i in file:
+#    list.append(i)
+# print(list) 
+# file.close()
 
-with open('learning\Test.txt','w')as f:
-   f.write('ura 12')
+# with open('learning\Test.txt','w')as f:
+#    f.write('ura 12')
 
 # try: # попробует выполнить 
 #    file = open('learning\Test.txt','r')
@@ -223,3 +223,32 @@ with open('learning\Test.txt','w')as f:
 # finally:
 #    file.close()
 #    print('file closed') 
+
+#импорт 
+# def print_age(age):
+#    print('тебе:',age)
+
+#lambda
+funciya = lambda x,y : x*y
+print(funciya(10,150))
+
+#map делает из списка str в список int
+# list0 = ['123','1125','9651','15','17','192']
+# list0 = list(map(int,list0))
+# print(list0)
+
+# list1 = [1,2,3,4,5,6,7]
+# list1 = list(map(lambda x : x*2,list1))
+# print(list1)
+
+#filter отфильтровывает лист ваш
+list2 = ['Egor','Pasha','makarik','Petya','Vorona','hihi']
+list3 = list(filter(lambda name: len(name) > 4, list2))
+print(list3)
+
+#zip
+list4 = [1,2,3,4,5]
+stc = 'abcd'
+tuple = (True,True,False,False)
+pasha = list(zip(list4,tuple,stc))
+print(pasha)
